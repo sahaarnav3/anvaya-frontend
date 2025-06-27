@@ -50,7 +50,7 @@ export default function Home() {
 
   return (
     <main className="" style={{ height: "100vh" }}>
-      <h1 className="text-center m-0 text-bolder py-4">
+      <h1 className="text-center m-0 text-bolder py-4" style={{backgroundColor: "#1370bc44"}}>
         <strong>Anvaya CRM Dashboard</strong>
       </h1>
       <section className="row m-0" style={{ height: "89.7%" }}>

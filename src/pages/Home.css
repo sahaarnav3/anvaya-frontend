@@ -4,11 +4,12 @@
     cursor: pointer;
 }
 
-h1 {
-    background-color: #1370bc44;
-}
-
 .lead-list {
     border: 1px solid rgb(179, 179, 179);
     height: 22.5rem;
 }
+
+/* .pholder::placeholder {
+    opacity: 1;
+    color: black;
+} */
