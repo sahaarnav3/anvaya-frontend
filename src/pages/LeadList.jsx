@@ -3,9 +3,8 @@ import { NavLink } from "react-router-dom";
 import useFetch from "../useFetch";
 import { useEffect, useState } from "react";
 
-export default function LeadManagement() {
+export default function LeadList() {
   const [finalLeadList, setFinalLeadList] = useState([]);
-//   const [finalLeadListTwo, setFinalLeadListTwo] = useState([]);
   const [salesAgentList, setSalesAgentList] = useState([]);
   const [statusFilter, setStatusFilter] = useState("All");
   const [salesAgentFilter, setSalesAgentFilter] = useState("All");
@@ -28,7 +27,7 @@ export default function LeadManagement() {
           setSalesAgentList([...salesAgentList, lead.salesAgent.name]); // To set agents list "uniquely". No repetitions.
       });
     }
-  }, [finalData]);
+  }, [finalData, salesAgentList]);
 
   function statusFilterHandler(e) {
     setStatusFilter(e.target.value);
@@ -216,7 +215,7 @@ export default function LeadManagement() {
               <option value="LessToMore">Less To More</option>
             </select>
           </div>
-          <NavLink className="mt-2 px-5 btn btn-primary btn-lg">
+          <NavLink className="mt-2 px-5 btn btn-primary btn-lg" to="/add_new_lead">
             Add New Lead
           </NavLink>
         </div>

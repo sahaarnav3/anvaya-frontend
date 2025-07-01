@@ -155,7 +155,7 @@ export default function Home() {
             <option value="Proposal Sent">Proposal Sent</option>
             <option value="Closed">Closed</option>
           </select>
-          <NavLink className="mt-4 px-5 btn btn-primary btn-lg">
+          <NavLink className="mt-4 px-5 btn btn-primary btn-lg" to="/add_new_lead">
             Add New Lead
           </NavLink>
         </div>
