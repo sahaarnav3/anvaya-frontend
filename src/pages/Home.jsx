@@ -60,7 +60,7 @@ export default function Home() {
             style={{ listStyle: "none" }}
           >
             <li className="py-3 fs-2">
-              <NavLink className="text-decoration-none text-white">
+              <NavLink className="text-decoration-none text-white" to="/lead_list">
                 Leads
               </NavLink>
             </li>

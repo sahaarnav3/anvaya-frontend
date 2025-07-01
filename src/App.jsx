@@ -5,7 +5,8 @@ import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home";
-import LeadManagement from "./pages/LeadManagement"
+import LeadManagement from "./pages/LeadManagement";
+import LeadList from "./pages/LeadList";
 
 function App() {
     return(
@@ -13,6 +14,7 @@ function App() {
         <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/lead_management/:leadId" element={<LeadManagement />} />
+            <Route path="/lead_list" element={<LeadList />} />
         </Routes>
         </BrowserRouter>
     )
