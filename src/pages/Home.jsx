@@ -70,7 +70,7 @@ export default function Home() {
               </NavLink>
             </li>
             <li className="py-3 fs-2">
-              <NavLink className="text-decoration-none text-white">
+              <NavLink className="text-decoration-none text-white" to="/agent_list">
                 Agents
               </NavLink>
             </li>
