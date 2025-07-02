@@ -79,7 +79,7 @@ export default function SalesAgentManagement() {
           </div>
           <NavLink
             className="mt-4 px-5 btn btn-primary btn-lg"
-            to="/add_new_lead"
+            to="/add_new_sales_agent"
           >
             Add New Agent
           </NavLink>
