@@ -10,7 +10,9 @@ export default function LeadList() {
   const [salesAgentFilter, setSalesAgentFilter] = useState("All");
 
   const apiUrl = "https://anvaya-backend-henna.vercel.app/leads";
+  const allSalesAgentUrl = "https://anvaya-backend-henna.vercel.app/agents";
   const { finalData, loading } = useFetch(apiUrl);
+  const { finalData: allSalesAgents } = useFetch(allSalesAgentUrl);
 
   const priorityOrder = {
     High: 3,
@@ -21,13 +23,15 @@ export default function LeadList() {
   useEffect(() => {
     if (finalData && finalData.length > 0) {
       setFinalLeadList(finalData);
-    //   setFinalLeadListTwo(finalData);
-      finalData.map((lead) => {
-        if (!salesAgentList.includes(lead.salesAgent.name))
-          setSalesAgentList([...salesAgentList, lead.salesAgent.name]); // To set agents list "uniquely". No repetitions.
-      });
     }
-  }, [finalData, salesAgentList]);
+  }, [finalData]);
+
+  useEffect(() => {
+    let temp = [];
+    if(allSalesAgents)
+      allSalesAgents.map(agent => temp.push(agent.name));
+    setSalesAgentList(temp);
+  }, [allSalesAgents]);
 
   function statusFilterHandler(e) {
     setStatusFilter(e.target.value);
@@ -125,9 +129,12 @@ export default function LeadList() {
                   <th scope="col" className="py-3">
                     Sales Agent
                   </th>
-                  {/* <th scope="col" className="py-3">
+                  <th scope="col" className="py-3">
                     Priority
-                  </th> */}
+                  </th> 
+                  <th scope="col" className="py-3">
+                    Time to Close
+                  </th> 
                   {/* Uncomment the above while demonstrating.. */}
                 </tr>
               </thead>
@@ -137,7 +144,8 @@ export default function LeadList() {
                     <td className="py-3">Loading...</td>
                     <td className="py-3">Loading...</td>
                     <td className="py-3">Loading...</td>
-                    {/* <td className="py-3">Loading...</td> */}
+                    <td className="py-3">Loading...</td>
+                    <td className="py-3">Loading...</td>
                   </tr>
                 ) : finalLeadList?.length > 0 ? (
                   finalLeadList.map((lead) => (
@@ -145,7 +153,8 @@ export default function LeadList() {
                       <td className="py-3">{lead.name}</td>
                       <td className="py-3">{lead.status}</td>
                       <td className="py-3">{lead.salesAgent.name}</td>
-                      {/* <td className="py-3">{lead.timeToClose}</td> */}
+                      <td className="py-3">{lead.priority}</td>
+                      <td className="py-3">{lead.timeToClose}</td>
                     </tr>
                   ))
                 ) : (
@@ -153,7 +162,8 @@ export default function LeadList() {
                     <td className="py-3">No Data</td>
                     <td className="py-3">No Data</td>
                     <td className="py-3">No Data</td>
-                    {/* <td className="py-3">No Data</td> */}
+                    <td className="py-3">No Data</td>
+                    <td className="py-3">No Data</td>
                   </tr>
                 )}
               </tbody>
