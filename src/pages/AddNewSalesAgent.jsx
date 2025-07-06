@@ -5,6 +5,8 @@ import axios from "axios";
 export default function AddNewSalesAgent() {
   const [agentName, setAgentName] = useState("");
   const [agentEmail, setAgentEmail] = useState("");
+  const [successMessage, setSuccessMessage] = useState(false);
+  const [failureMessage, setFailureMessage] = useState(false);
 
   const postSalesAgentUrl = "https://anvaya-backend-henna.vercel.app/agents";
 
@@ -15,8 +17,10 @@ export default function AddNewSalesAgent() {
       !agentEmail.includes("@") ||
       !agentEmail.includes(".com") ||
       !(agentEmail.indexOf(".com") > agentEmail.indexOf("@"))
-    )
-      return alert("Please enter Email with proper formatting.");
+    ) {
+      setSuccessMessage(false);
+      return setFailureMessage(true);
+    }
 
     const requestBody = {
       name: agentName,
@@ -26,11 +30,13 @@ export default function AddNewSalesAgent() {
     axios
       .post(postSalesAgentUrl, requestBody)
       .then((response) => {
-        if (response.status == 200)
-          return alert("Sales Agent added successfully.");
-        return alert(
-          "Sales Agent couldn't be added. Check data and try again."
-        );
+        if (response.status == 200) {
+          setSuccessMessage(true);
+          return setFailureMessage(false);
+        } else {
+          setSuccessMessage(false);
+          return setFailureMessage(true);
+        }
       })
       .catch((err) => console.log("Error Adding Sales Agent -", err));
   }
@@ -41,7 +47,7 @@ export default function AddNewSalesAgent() {
         className="text-center m-0 text-bolder py-4"
         style={{ backgroundColor: "#1370bc44" }}
       >
-        <strong>Add New Lead</strong>
+        <strong>Add New Sales Agent</strong>
       </h1>
       <section className="row m-0" style={{ height: "89.7%" }}>
         <div className="col-sm-2 p-0" style={{ backgroundColor: "#1371bc" }}>
@@ -65,36 +71,66 @@ export default function AddNewSalesAgent() {
             style={{ backgroundColor: "#1370bc44" }}
           >
             <div className="d-flex my-1">
-              <h2 className="px-4 py-2" style={{ width: "30%" }}>
+              <h3 className="px-4 py-2" style={{ width: "30%" }}>
                 Agent Name:
-              </h2>
+              </h3>
               <input
                 type="text"
                 placeholder="Enter Agent Name"
-                className="bg-white my-1 form-control text-center rounded fs-3 fw-semibold pholder"
+                className="bg-white my-1 form-control text-center rounded fs-4 fw-semibold pholder"
                 style={{ width: "50%" }}
                 onChange={(e) => setAgentName(e.target.value)}
               />
             </div>
             <div className="d-flex my-1">
-              <h2 className="px-4 py-2" style={{ width: "30%" }}>
+              <h3 className="px-4 py-2" style={{ width: "30%" }}>
                 Email Address:
-              </h2>
+              </h3>
               <input
                 type="email"
                 placeholder="Enter Agent Email"
-                className="bg-white my-1 form-control text-center rounded fs-3 fw-semibold pholder"
+                className="bg-white my-1 form-control text-center rounded fs-4 fw-semibold pholder"
                 style={{ width: "50%" }}
                 onChange={(e) => setAgentEmail(e.target.value)}
               />
             </div>
           </div>
           <NavLink
-            className="btn btn-primary my-4 fs-3 px-5"
+            className="btn btn-primary my-4 fs-4 px-5"
             onClick={createLeadHandler}
           >
             Create New Agent
           </NavLink>
+          {successMessage && (
+            <div
+              class="alert alert-success alert-dismissible fade show"
+              role="alert"
+            >
+              <strong>Sales Agent Added Successfully !</strong>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="alert"
+                aria-label="Close"
+              ></button>
+            </div>
+          )}
+          {failureMessage && (
+            <div
+              class="alert alert-danger alert-dismissible fade show"
+              role="alert"
+            >
+              <strong>
+                Sales Agent couldn't be added. Please check data and try again.
+              </strong>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="alert"
+                aria-label="Close"
+              ></button>
+            </div>
+          )}
         </div>
       </section>
     </main>

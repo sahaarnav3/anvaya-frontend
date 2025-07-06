@@ -15,6 +15,8 @@ export default function AddNewLead() {
   const [leadStatus, setLeadStatus] = useState("New");
   const [priority, setPriority] = useState("High");
   const [timeToClose, setTimeToClose] = useState(0);
+  const [successMessage, setSuccessMessage] = useState(false);
+  const [failureMessage, setFailureMessage] = useState(false);
 
   function formHandler() {
     if (leadName.length < 1) return alert("Please Enter Lead Name");
@@ -33,10 +35,14 @@ export default function AddNewLead() {
     axios
       .post(postLeadUrl, requestBody)
       .then((response) => {
-        if (response.status == 200) return alert("Lead Added Successfully.");
-        return alert(
-          "Lead couldn't be added. Please check data and try again."
-        );
+        if (response.status == 200) {
+          setSuccessMessage(true);
+          return setFailureMessage(false);
+        }
+        else {
+          setSuccessMessage(false);
+          return setFailureMessage(true);
+        }
       })
       .catch((err) => console.log(err));
   }
@@ -71,23 +77,23 @@ export default function AddNewLead() {
             style={{ backgroundColor: "#1370bc44" }}
           >
             <div className="d-flex my-1">
-              <h2 className="px-4 py-2" style={{ width: "30%" }}>
+              <h3 className="px-4 py-2" style={{ width: "30%" }}>
                 Lead Name:
-              </h2>
+              </h3>
               <input
                 type="text"
                 placeholder="Enter A Name..."
-                className="bg-white my-1 form-control text-center rounded fs-3 fw-semibold pholder"
+                className="bg-white my-1 form-control text-center rounded fs-4 fw-semibold pholder"
                 style={{ width: "50%" }}
                 onChange={(e) => setLeadName(e.target.value)}
               />
             </div>
             <div className="d-flex my-1">
-              <h2 className="px-4 py-2" style={{ width: "30%" }}>
+              <h3 className="px-4 py-2" style={{ width: "30%" }}>
                 Sales Agent:
-              </h2>
+              </h3>
               <select
-                className="form-select my-1 bg-white text-center rounded fs-3 fw-semibold pholder"
+                className="form-select my-1 bg-white text-center rounded fs-4 fw-semibold pholder"
                 style={{ width: "50%" }}
                 onChange={(e) => setSalesAgent(e.target.value)}
               >
@@ -104,11 +110,11 @@ export default function AddNewLead() {
               </select>
             </div>
             <div className="d-flex my-1">
-              <h2 className="px-4 py-2" style={{ width: "30%" }}>
+              <h3 className="px-4 py-2" style={{ width: "30%" }}>
                 Lead Source:
-              </h2>
+              </h3>
               <select
-                className="form-select my-1 bg-white text-center rounded fs-3 fw-semibold pholder"
+                className="form-select my-1 bg-white text-center rounded fs-4 fw-semibold pholder"
                 style={{ width: "50%" }}
                 onChange={(e) => setLeadSource(e.target.value)}
               >
@@ -121,11 +127,11 @@ export default function AddNewLead() {
               </select>
             </div>
             <div className="d-flex my-1">
-              <h2 className="px-4 py-2" style={{ width: "30%" }}>
+              <h3 className="px-4 py-2" style={{ width: "30%" }}>
                 Lead Status:
-              </h2>
+              </h3>
               <select
-                className="form-select my-1 bg-white text-center rounded fs-3 fw-semibold pholder"
+                className="form-select my-1 bg-white text-center rounded fs-4 fw-semibold pholder"
                 style={{ width: "50%" }}
                 onChange={(e) => setLeadStatus(e.target.value)}
               >
@@ -137,11 +143,11 @@ export default function AddNewLead() {
               </select>
             </div>
             <div className="d-flex my-1">
-              <h2 className="px-4 py-2" style={{ width: "30%" }}>
+              <h3 className="px-4 py-2" style={{ width: "30%" }}>
                 Priority:
-              </h2>
+              </h3>
               <select
-                className="form-select my-1 bg-white text-center rounded fs-3 fw-semibold pholder"
+                className="form-select my-1 bg-white text-center rounded fs-4 fw-semibold pholder"
                 style={{ width: "50%" }}
                 onChange={(e) => setPriority(e.target.value)}
               >
@@ -151,24 +157,48 @@ export default function AddNewLead() {
               </select>
             </div>
             <div className="d-flex my-1">
-              <h2 className="px-4 py-2" style={{ width: "30%" }}>
+              <h3 className="px-4 py-2" style={{ width: "30%" }}>
                 Time To Close:
-              </h2>
+              </h3>
               <input
                 type="number"
                 placeholder="Enter No. Of Days..."
-                className="bg-white form-control my-1 text-center rounded fs-3 fw-semibold pholder"
+                className="bg-white form-control my-1 text-center rounded fs-4 fw-semibold pholder"
                 style={{ width: "50%" }}
                 onChange={(e) => setTimeToClose(e.target.value)}
               />
             </div>
           </div>
           <NavLink
-            className="btn btn-primary my-4 fs-3 px-5"
+            className="btn btn-primary my-4 fs-4 px-5"
             onClick={formHandler}
           >
             Create Lead
           </NavLink>
+          {successMessage && <div
+            class="alert alert-success alert-dismissible fade show"
+            role="alert"
+          >
+            <strong>User Agent Added Successfully !</strong>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="alert"
+              aria-label="Close"
+            ></button>
+          </div>}
+          {failureMessage && <div
+            class="alert alert-danger alert-dismissible fade show"
+            role="alert"
+          >
+            <strong>Lead couldn't be added. Please check data and try again.</strong>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="alert"
+              aria-label="Close"
+            ></button>
+          </div>}
         </div>
       </section>
     </main>

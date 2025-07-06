@@ -144,33 +144,33 @@ export default function LeadManagement() {
             style={{ backgroundColor: "#1370bc44" }}
           >
             <div className="d-flex my-1">
-              <h2 className="px-4 py-2" style={{ width: "30%" }}>
+              <h3 className="px-4 py-2" style={{ width: "30%" }}>
                 Lead Name:
-              </h2>
+              </h3>
               {editLeadDetailsStatus ? (
                 <input
                   type="text"
                   placeholder={finalLeadData?.name}
-                  className="bg-white my-1 text-center rounded fs-2 fw-bold pholder"
+                  className="bg-white my-1 text-center rounded fs-4 fw-bold pholder"
                   style={{ width: "50%" }}
                   onChange={(e) => setEditLeadName(e.target.value)}
                 />
               ) : (
-                <h2
+                <h3
                   className="bg-white py-2 text-center rounded"
                   style={{ width: "50%" }}
                 >
                   <strong>{loading ? "Loading.." : finalLeadData?.name}</strong>
-                </h2>
+                </h3>
               )}
             </div>
             <div className="d-flex my-1">
-              <h2 className="px-4 py-2" style={{ width: "30%" }}>
+              <h3 className="px-4 py-2" style={{ width: "30%" }}>
                 Sales Agent:
-              </h2>
+              </h3>
               {editLeadDetailsStatus ? (
                 <select
-                  className="form-select my-1 bg-white text-center rounded fs-2 fw-bold pholder"
+                  className="form-select my-1 bg-white text-center rounded fs-4 fw-bold pholder"
                   style={{ width: "50%" }}
                   onChange={(e) => setEditLeadSalesAgent(e.target.value)}
                 >
@@ -191,24 +191,24 @@ export default function LeadManagement() {
                   )}
                 </select>
               ) : (
-                <h2
+                <h3
                   className="bg-white py-2 text-center rounded"
                   style={{ width: "50%" }}
                 >
                   <strong>
                     {loading ? "Loading.." : finalLeadData?.salesAgent?.name}
                   </strong>
-                </h2>
+                </h3>
               )}
             </div>
             <div className="d-flex my-1">
-              <h2 className="px-4 py-2" style={{ width: "30%" }}>
+              <h3 className="px-4 py-2" style={{ width: "30%" }}>
                 Lead Source:
-              </h2>
+              </h3>
 
               {editLeadDetailsStatus ? (
                 <select
-                  className="form-select my-1 bg-white text-center rounded fs-2 fw-bold pholder"
+                  className="form-select my-1 bg-white text-center rounded fs-4 fw-bold pholder"
                   style={{ width: "50%" }}
                   onChange={(e) => setEditLeadSource(e.target.value)}
                 >
@@ -250,23 +250,23 @@ export default function LeadManagement() {
                   </option>
                 </select>
               ) : (
-                <h2
+                <h3
                   className="bg-white py-2 text-center rounded"
                   style={{ width: "50%" }}
                 >
                   <strong>
                     {loading ? "Loading.." : finalLeadData?.source}
                   </strong>
-                </h2>
+                </h3>
               )}
             </div>
             <div className="d-flex my-1">
-              <h2 className="px-4 py-2" style={{ width: "30%" }}>
+              <h3 className="px-4 py-2" style={{ width: "30%" }}>
                 Lead Status:
-              </h2>
+              </h3>
               {editLeadDetailsStatus ? (
                 <select
-                  className="form-select my-1 bg-white text-center rounded fs-2 fw-bold pholder"
+                  className="form-select my-1 bg-white text-center rounded fs-4 fw-bold pholder"
                   style={{ width: "50%" }}
                   onChange={(e) => setEditLeadStatus(e.target.value)}
                 >
@@ -299,23 +299,23 @@ export default function LeadManagement() {
                   </option>
                 </select>
               ) : (
-                <h2
+                <h3
                   className="bg-white py-2 text-center rounded"
                   style={{ width: "50%" }}
                 >
                   <strong>
                     {loading ? "Loading.." : finalLeadData?.status}
                   </strong>
-                </h2>
+                </h3>
               )}
             </div>
             <div className="d-flex my-1">
-              <h2 className="px-4 py-2" style={{ width: "30%" }}>
+              <h3 className="px-4 py-2" style={{ width: "30%" }}>
                 Priority:
-              </h2>
+              </h3>
               {editLeadDetailsStatus ? (
                 <select
-                  className="form-select my-1 bg-white text-center rounded fs-2 fw-bold pholder"
+                  className="form-select my-1 bg-white text-center rounded fs-4 fw-bold pholder"
                   style={{ width: "50%" }}
                   onChange={(e) => setEditLeadPriority(e.target.value)}
                 >
@@ -339,37 +339,37 @@ export default function LeadManagement() {
                   </option>
                 </select>
               ) : (
-                <h2
+                <h3
                   className="bg-white py-2 text-center rounded"
                   style={{ width: "50%" }}
                 >
                   <strong>
                     {loading ? "Loading.." : finalLeadData?.priority}
                   </strong>
-                </h2>
+                </h3>
               )}
             </div>
             <div className="d-flex my-1">
-              <h2 className="px-4 py-2" style={{ width: "30%" }}>
+              <h3 className="px-4 py-2" style={{ width: "30%" }}>
                 Time To Close:
-              </h2>
+              </h3>
               {editLeadDetailsStatus ? (
                 <input
                   type="text"
                   placeholder={finalLeadData?.timeToClose}
-                  className="bg-white my-1 text-center rounded fs-2 fw-bold pholder"
+                  className="bg-white my-1 text-center rounded fs-4 fw-bold pholder"
                   style={{ width: "50%" }}
                   onChange={(e) => setEditLeadTimeToClose(e.target.value)}
                 />
               ) : (
-                <h2
+                <h3
                   className="bg-white py-2 text-center rounded"
                   style={{ width: "50%" }}
                 >
                   <strong>
                     {loading ? "Loading.." : finalLeadData?.timeToClose} Days
                   </strong>
-                </h2>
+                </h3>
               )}
             </div>
           </div>
