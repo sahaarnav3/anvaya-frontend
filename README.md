@@ -1,12 +1,44 @@
-# React + Vite
+# Anvaya CRM (Front-End)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack Anvaya CRM application where you can do lead management with defined steps for each lead's lifecycle.  
+Built with a React frontend, Express/Node backend and MongoDB database.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Demo Link
 
-## Expanding the ESLint configuration
+[Live Demo](https://anvaya-frontend-nine.vercel.app/)  
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+--- 
+
+## Quick Start
+
+```
+git clone https://github.com/sahaarnav3/anvaya-frontend.git
+cd anvaya-frontend
+npm install
+npm run dev      # or `npm start` / `yarn dev`
+```
+
+## Technologies
+- React JS
+- React Router
+- Node.js
+- Express
+- MongoDB
+
+## Demo Video
+Watch a walkthrough (5–7 minutes) of all major features of this app:
+[Drive Link](https://drive.google.com/file/d/1pQQKx5m5CAMwKpzW3BnzNN1b0Y7CXKrG/view?usp=drive_link)
+
+## Features
+**Home**
+- A landing page with a list of featured categories.
+- Click on any one of the categories to be redirected to the product list page.
+
+## API Reference
+
+Refer to the Back-End repo for all the details about API. [Shopping Site Back-End](https://github.com/sahaarnav3/anvaya-backend.git)
+
+## Contact
+For bugs or feature requests, please reach out to sahaarnav3@gmail.com
